@@ -42,7 +42,10 @@ async def end(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     await message.reply("Hi!\nЯ бот для игры с примерами!\nПравила: Ваша задача правильно ответить на пример!\nДля окончания игрв напишите /stop_game\nВы готовы начать?", reply_markup=keyboard)
     await igrobot.start.set()
-
+    count_wrong.clear()
+    count_right.clear()
+    count.clear()
+    
 @dp.message_handler(state=igrobot.start)
 async def echo(message: types.Message, state: FSMContext):
     if message.text == 'Да!!!!!!':
