@@ -37,6 +37,12 @@ def prime():
 async def end(message: types.Message, state: FSMContext):
     primer.clear()
     await message.answer(f"Вы решили {len(count)} примеров\nПравильно {len(count_right)}\nНеправильно {len(count_wrong)}\nПриходи когда хочешь занятся матешой")
+    if len(count_right) >= len(count_wrong):
+        await message.answer("😄")
+    else:
+        await message.answer("😔")
+
+
 
 @dp.message_handler(commands=['start', 'help'], state='*')
 async def send_welcome(message: types.Message, state: FSMContext):
